@@ -5,26 +5,23 @@
 
 #include "spdlog/spdlog.h"
 
-namespace utils
+namespace utils::logging
 {
-  namespace logging
+  struct DiscordSettings
   {
-    struct DiscordSettings
-    {
-      std::string logChannel;
-      std::string botToken;
-    };
+    std::string logChannel;
+    std::string botToken;
+  };
 
-    struct LogSettings
-    {
-      LogSettings() : optDiscordSettings(std::nullopt) { }
-      LogSettings(DiscordSettings const& discSettings) : optDiscordSettings(discSettings) { }
+  struct LogSettings
+  {
+    LogSettings() : optDiscordSettings(std::nullopt) { }
+    LogSettings(DiscordSettings const& discSettings) : optDiscordSettings(discSettings) { }
 
-      std::optional<DiscordSettings> optDiscordSettings;
-    };
+    std::optional<DiscordSettings> optDiscordSettings;
+  };
 
-    void init_spdlog(LogSettings logSettings = LogSettings());
-  } // namespace logging
-} // namespace utils
+  void init_spdlog(LogSettings logSettings = LogSettings());
+} // namespace utils::logging
 
 #endif

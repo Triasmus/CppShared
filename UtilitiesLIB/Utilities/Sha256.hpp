@@ -3,12 +3,12 @@
 
 #include <string>
 
-namespace utils
+namespace utils::crypto
 {
   std::string sha256(std::string const& input);
 
   std::string hmacSha256(std::string const& input, std::string const& key);
 
-} // namespace utils
+} // namespace utils::crypto
 
 #endif

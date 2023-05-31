@@ -20,14 +20,14 @@ namespace
   }
 } // namespace
 
-std::string utils::sha256(std::string const& input)
+std::string utils::crypto::sha256(std::string const& input)
 {
   unsigned char hash[SHA256_DIGEST_LENGTH];
   SHA256(reinterpret_cast<const unsigned char*>(input.c_str()), input.length(), hash);
   return b2aToHex(hash, SHA256_DIGEST_LENGTH);
 }
 
-std::string utils::hmacSha256(std::string const& input, std::string const& key)
+std::string utils::crypto::hmacSha256(std::string const& input, std::string const& key)
 {
   unsigned char hash[SHA256_DIGEST_LENGTH];
 

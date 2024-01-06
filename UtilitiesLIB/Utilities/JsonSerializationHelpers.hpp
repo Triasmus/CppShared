@@ -1,6 +1,9 @@
 #ifndef UTILITIES_JSONSERIALIZATIONHELPERS_HPP
 #define UTILITIES_JSONSERIALIZATIONHELPERS_HPP
 
+#include <chrono>
+#include <sstream>
+
 #include <boost/json.hpp>
 
 #include <magic_enum.hpp>
@@ -23,6 +26,22 @@ namespace utils
       auto s = boost::json::value_to<std::string>(obj.at(key));
       if (!s.empty())
         t = std::stod(s);
+    }
+  }
+
+  inline void extractTime(boost::json::object const& obj,
+                          std::chrono::sys_time<std::chrono::nanoseconds>& t,
+                          std::string const& fmt,
+                          boost::json::string_view key)
+  {
+    if (obj.contains(key))
+    {
+      auto s = boost::json::value_to<std::string>(obj.at(key));
+      if (!s.empty())
+      {
+        std::stringstream in(s);
+        std::chrono::from_stream(in, fmt.c_str(), t);
+      }
     }
   }
 

@@ -2,6 +2,8 @@ set(lib_name Utilities)
 ###############################################
 set(${lib_name}_srcs
   JsonSerializationHelpers.hpp
+  RateLimiter.cpp
+  RateLimiter.hpp
   Sha256.cpp
   Sha256.hpp
   SpdlogInit.cpp

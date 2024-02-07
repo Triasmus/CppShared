@@ -3,6 +3,7 @@
 
 #include <atomic>
 #include <chrono>
+#include <mutex>
 
 namespace utils
 {
@@ -20,6 +21,7 @@ namespace utils
     const uint32_t m_rate;
     std::atomic<std::chrono::steady_clock::time_point> m_lastAccessed;
     std::atomic_uint64_t m_lastUsed;
+    std::mutex m_protectConsumption;
   };
 } // namespace utils
 
